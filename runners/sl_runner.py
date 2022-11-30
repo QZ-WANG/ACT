@@ -101,7 +101,7 @@ class SLRunner(BaseRunner):
         n_batch_out, n_batch_in = len(self.outlier_train_loader), len(self.inlier_train_loader)
         src_nb_out, src_nb_in = len(self.src_out_loader), len(self.src_in_loader)
 
-        print("%3d batches in out loader and %3d batches in in loader" % (n_batch_in, n_batch_out))
+        print("%3d batches in in loader and %3d batches in out loader" % (n_batch_in, n_batch_out))
 
         criterion = build_criterion("deviation", self.args.dev_conf_margin)
         pseudo_in_iter, pseudo_out_iter = iter(self.inlier_train_loader), iter(self.outlier_train_loader)

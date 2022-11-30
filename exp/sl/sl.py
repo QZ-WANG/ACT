@@ -112,8 +112,8 @@ def test_one_timestamp(src_data, tar_data, src_labels, tar_labels, ckpts, optim_
     else:
         raise NotImplementedError("Invalid labelling method.")
 
-    pseudo_labeling_eval(pseudo_out_idx, torch.where(tar_labels == 1)[0], outlier=True)
-    pseudo_labeling_eval(pseudo_in_idx, torch.where(tar_labels == 0)[0], outlier=False)
+    # pseudo_labeling_eval(pseudo_out_idx, torch.where(tar_labels == 1)[0], outlier=True)
+    # pseudo_labeling_eval(pseudo_in_idx, torch.where(tar_labels == 0)[0], outlier=False)
 
     pseudo_idx = {"inlier": pseudo_in_idx, "outlier": pseudo_out_idx}
 
