@@ -1,0 +1,17 @@
+proj_dir: ./
+shared_dir: ./
+device: 0
+
+# Source Configuration
+src_dset_name: "YelpRes"
+src_script: "./exp/gdev_net_sup/gdev_net_sup.py"
+src_config: config_res
+
+# Target Configuration
+tar_dset_name: "YelpHotel"
+adapt_script: "./exp/act/act.py"
+adapt_config: res_to_htl
+
+# Pseudo Labelling Configuration
+pl_script: "./exp/sl/sl.py"
+pl_config: res_to_htl

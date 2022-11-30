@@ -1,0 +1,63 @@
+# dataset
+dset_dir: "./datasets/"
+proj_dir: "./"
+share_dir: "./"
+encoder_type: sage
+graph_obj: sage_unsup
+adj_dropout: 0.0
+
+source:
+  dset_name: "YelpRes"
+  dset_fn: "YelpRes.mat"
+  resume_from: null
+  input_dim: 8000
+  hidden_dim: 256
+  ebd_dim: 64
+  n_layers: 2
+  drop_out: 0.5
+  model_path: null
+  ckpt: best.pt
+  sampling_sizes: [25, 10]
+
+
+target:
+  dset_name: "YelpHotel"
+  dset_fn: "YelpHotel.mat"
+  input_dim: 8000
+  hidden_dim: 256
+  ebd_dim: 64
+  n_layers: 2
+  drop_out: 0.5
+  adapt: True
+  model_path: null
+  ckpt_name: null
+  sampling_sizes: [25, 10]
+
+exp_name: act
+batch_size: 128
+out_batch_size: 128
+sampling_sizes: [25, 10]
+
+# sinkhorn
+sh_scaling: 0.75
+sh_p: 2
+sh_blur: 0.05
+
+# Adapt
+adapt:
+  n_epochs: 50
+  name: adam
+  weight_decay: 0.
+  domain_lr: 1.0e-04
+  # struct_lr: 1.0e-03
+  use_all: True
+  show_every: 50
+  plot_every: 5
+  domain_loss: True
+  struct_loss: True
+  clip: null
+  scheduler: null
+
+# device
+device: 0
+n_workers: 8

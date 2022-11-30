@@ -1,0 +1,54 @@
+seed: 42
+
+# dataset
+# Name of the dataset
+dset_name: "YelpRes"
+# The folder where the dataset is stored
+dset_dir: "./datasets/YelpRes/"
+proj_dir: "./"
+# directory to store ckpts - can be different from proj_dir if main disk space is limited
+share_dir: "./"
+# Dataset filename
+dset_fn: "YelpRes.mat"
+encoder_type: sage
+
+# DEBUG
+debug: True
+
+# device
+device: 0
+n_workers: 12
+
+# Optimisation
+lr: 1.0e-03
+weight_decay: 0.0
+batch_size: 128
+n_epochs: 50
+dropout: 0.5
+
+# Scheduler setting only used when scheduler is not null
+scheduler: null
+step_size: 20
+gamma: 0.1
+
+# Experiment
+# Name of the experiment for clean record of ckpts.
+exp_name: "graph_dev_net_sup"
+use_train_split: False
+train_ratio: 1.0
+
+# backbone
+input_dim: 8000
+hidden_dim: 256
+ebd_dim: 64
+n_layers: 2
+
+# aggregator
+sampling_sizes: [25, 10]
+
+# ckpt
+save_every: 5
+
+# for debug - currently unused
+source: null
+target: null

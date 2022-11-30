@@ -1,0 +1,99 @@
+# seed: 42
+
+# Directories
+dset_dir: "./datasets/"
+share_dir: "./"
+
+# Mode [pseudo_unsup_test,  src_raw_test, src_raw_pseudo_test]
+mode: sl
+
+# Experiments
+method_name: sl
+exp_name: sl
+debug: True
+adj_dropout: 0.0
+select: sigma
+
+# Pseudo Labeling
+a_out: 2.5
+a_in: 0.0
+init_a_out: 2.5
+init_a_in: 0.5
+max_out_ratio: 0.05
+max_in_ratio: 0.25
+adaptive: False
+select: sigma
+topk_out_nb: 2
+topk_in_nb: 20
+use_src_disc: False
+init_steps: 20
+label_every: 10
+rounding: False
+use_warmup_encoder: False
+constraint: False
+
+# Hardware
+device: 0
+n_workers: 12
+# [iForest, clf, init_test]
+# which_label: clf
+
+
+# Domains
+source:
+  dset_name: YelpRes
+  dset_fn: YelpRes.mat
+  ckpt: null
+  # model_dir is an empty str in pipeline mode
+  # model_dir: ./ckpt/src_gdev
+  model_dir: ""
+  input_dim: 8000
+  hidden_dim: 256
+  ebd_dim: 64
+  n_layers: 2
+  drop_out: 0.5
+  state_fn: best.pt
+
+
+target:
+  dset_name: YelpHotel
+  dset_fn: YelpHotel.mat
+  # model_dir is an empty str in pipeline mode
+  #  model_dir: ./ckpt/act
+  model_dir: ""
+  # To run SL only, put the checkpoint(s) in the list.
+  # ckpts: [
+  #          YelpRes_rdc2YelpHotel_rdc_24-02-2022-11-22-59,
+  # ]
+  # Leave checkpoint to null when running the entire pipeline
+  ckpts: null
+  input_dim: 8000
+  hidden_dim: 256
+  ebd_dim: 64
+  n_layers: 2
+  drop_out: 0.5
+  state_fn: unsup_act_49.pt
+
+# Models
+encoder_type: sage
+labeling_sampling_sizes: [25, 10]
+sampling_sizes: [25, 10]
+
+
+# few shot
+lr: 1.0e-04
+weight_decay: 0.0
+batch_size: 128
+in_batch_size: 128
+out_batch_size: 128
+total_steps: 200
+dropout: 0.5
+scheduler: null
+resume_from: null
+step_size: 20
+gamma: 0.1
+train_ratio: 0.9
+dev_conf_margin: 5.0
+optim_name: adam
+clip: null
+improve: True
