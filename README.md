@@ -1,5 +1,6 @@
 # Cross-Domain Graph Anomaly Detection via Anomaly-aware Contrastive Alignment (ACT)
 
+<a href="https://arxiv.org/abs/2212.01096"><img src="https://img.shields.io/badge/arXiv-2212.01096-b31b1b.svg" height=20></a> 
 <a href="https://pytorch.org/get-started/locally/"><img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white"></a>
 
 The official PyTorch implementation of **Cross-Domain Graph Anomaly Detection via Anomaly-aware Contrastive Alignment**, AAAI2023, to appear.
@@ -30,7 +31,7 @@ git clone https://github.com/QZ-WANG/ACT
 cd ACT
 conda env create -f env/environment.yml
 ```
-To set up the dataset directories,place the files as the following:
+To set up the dataset directories, place the data files as the following:
 ```
 datasets/
 ├── Amazon
@@ -42,7 +43,7 @@ datasets/
 └── YelpRes
     └── YelpRes.mat
 ```
-Note that we are seeking the approvals from the owners of the datasets to make them available. Meanwhile, please contact the author of COMMANDER (Ding et al. 2021) for the datasets.
+The authors of [COMMANDER (Ding et al. 2021)](https://ieeexplore.ieee.org/document/9556511) have kindly allowed us to share the datasets. Please ensure appropriate citations when using the datasets.
 
 ## Getting started
 To run the framework:
@@ -53,5 +54,4 @@ chmod +x ./script/pipeline.sh
 Please see the sample meta config file in `./exp/pipelines/config`.
 
 ## Acknowledgement
-
-This repository is developed using [PyTorch Geometric](https://pytorch-geometric.readthedocs.io/en/latest/). We thank the authors of COMMANDER (Ding et al. 2021) for sharing the datasets. 
+We thank the authors of [COMMANDER (Ding et al. 2021)](https://ieeexplore.ieee.org/document/9556511) for sharing the datasets. This repository is developed using [PyTorch Geometric](https://pytorch-geometric.readthedocs.io/en/latest/).
